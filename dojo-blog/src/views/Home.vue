@@ -11,7 +11,7 @@
 export default {
   name: 'Home',
   setup() {
-    console.log('setup')
+    console.log(this)
 
     let name = 'Mario'
     let age = 30
