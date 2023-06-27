@@ -2,6 +2,7 @@
   <div class="home">
     hoe
     <p>My name is {{ name }} and my age is {{ age }}</p>
+    <button @click="handleClick">click me</button>
   </div>
 </template>
 
@@ -15,9 +16,14 @@ export default {
     let name = 'Mario'
     let age = 30
 
+    const handleClick = () => {
+      console.log('you clicked me')
+    }
+
     return{
-      name: name,
-      age: age
+       name, //kan også bruke name: name
+       age,
+       handleClick,
     }
   }
 }
