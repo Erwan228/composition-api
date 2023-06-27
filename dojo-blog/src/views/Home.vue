@@ -65,7 +65,9 @@ export default {
       console.log('watch function ran')
     })
 
-    watchEffect
+    watchEffect(()=>{
+      console.log('watcheffect function ran')
+    })
 
     const matchingNames = computed(() => {
       return names.value.filter((name) => name.includes(search.value))
