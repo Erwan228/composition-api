@@ -14,12 +14,12 @@
     <button @click="updateScholarTwo">Update scholar two</button> -->
     <input type="text" v-model="search">
     <p>search term - {{ search }}</p>
-    <div v-for="name in names" :key="name">{{ name }}</div>
+    <div v-for="name in matchingNames" :key="name">{{ name }}</div>
   </div>
 </template>
 
 <script>
-import { computed, ref } from 'vue';
+import { computed, ref, watch, watchEffect } from 'vue';
 
 // import { ref, reactive } from 'vue'
 
@@ -61,7 +61,15 @@ export default {
     const search = ref('')
     const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach'])
 
+    watch(search, () => {
+      console.log('watch function ran')
+    })
 
+    watchEffect
+
+    const matchingNames = computed(() => {
+      return names.value.filter((name) => name.includes(search.value))
+    })
 
     return{
       //  name, //kan også bruke name: name
@@ -74,6 +82,7 @@ export default {
       // updateScholarTwo,
       names,
       search,
+      matchingNames,
     }
   }
 }
