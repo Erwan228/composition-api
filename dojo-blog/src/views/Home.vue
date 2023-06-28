@@ -12,12 +12,10 @@
     <h2>Reactive</h2>
     <p>{{ scholarTwo.name }} - {{ scholarTwo.age }}</p>
     <button @click="updateScholarTwo">Update scholar two</button> -->
-    <!-- <input type="text" v-model="search">
+    <input type="text" v-model="search">
     <p>search term - {{ search }}</p>
     <div v-for="name in matchingNames" :key="name">{{ name }}</div>
-    <button @click="handleClick">stop watching</button> -->
-
-
+    <button @click="handleClick">stop watching</button>
   </div>
 </template>
 
@@ -61,45 +59,40 @@ export default {
     //   return 'Erwan'
     // })
 
-    // const search = ref('')
-    // const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach', 'Kainé', 'Emil', 'Yonah'])
+    const search = ref('')
+    const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach', 'Kainé', 'Emil', 'Yonah'])
 
-    // const stopWatch = watch(search, () => {
-    //   console.log('watch function ran')
-    // })
+    const stopWatch = watch(search, () => {
+      console.log('watch function ran')
+    })
 
-    // const stopEffect = watchEffect(()=>{
-    //   console.log('watcheffect function ran', search.value)
-    // })
+    const stopEffect = watchEffect(()=>{
+      console.log('watcheffect function ran', search.value)
+    })
 
-    // const matchingNames = computed(() => {
-    //   return names.value.filter((name) => name.includes(search.value))
-    // })
+    const matchingNames = computed(() => {
+      return names.value.filter((name) => name.includes(search.value))
+    })
 
-    // const handleClick = () => {
-    //   stopWatch()
-    //   stopEffect()
-    // }
-    const posts = ref([
-      { title: 'welcome to the blog', body: 'Lorem ipsum', id: 1 },
-      { title: 'top 5 css tips', body: 'Lorem ipsum', id: 2 },
-    ])
+    const handleClick = () => {
+      stopWatch()
+      stopEffect()
+    }
 
     return{
       //  name, //kan også bruke name: name
       //  age,
-      //  handleClick,
+        handleClick,
       //p,
       // scholarOne,
       // updateScholarOne,
       // scholarTwo,
       // updateScholarTwo,
-      // names,
-      // search,
-      // matchingNames,
-      // stopEffect,
-      // stopWatch,
-      posts,
+      names,
+      search,
+      matchingNames,
+      stopEffect,
+      stopWatch,
     }
   }
 }
