@@ -15,6 +15,7 @@
     <input type="text" v-model="search">
     <p>search term - {{ search }}</p>
     <div v-for="name in matchingNames" :key="name">{{ name }}</div>
+    <button @click="handleClick">stop watching</button>
   </div>
 </template>
 
@@ -59,24 +60,29 @@ export default {
     // })
 
     const search = ref('')
-    const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach', 'Kainé', 'Emil'])
+    const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach', 'Kainé', 'Emil', 'Yonah'])
 
-    watch(search, () => {
+    const stopWatch = watch(search, () => {
       console.log('watch function ran')
     })
 
-    watchEffect(()=>{
-      console.log('watcheffect function ran')
+    const stopEffect = watchEffect(()=>{
+      console.log('watcheffect function ran', search.value)
     })
 
     const matchingNames = computed(() => {
       return names.value.filter((name) => name.includes(search.value))
     })
 
+    const handleClick = () => {
+      stopWatch()
+      stopEffect()
+    }
+
     return{
       //  name, //kan også bruke name: name
       //  age,
-      //  handleClick,
+        handleClick,
       //p,
       // scholarOne,
       // updateScholarOne,
@@ -85,6 +91,8 @@ export default {
       names,
       search,
       matchingNames,
+      stopEffect,
+      stopWatch,
     }
   }
 }
