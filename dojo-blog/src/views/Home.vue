@@ -59,7 +59,7 @@ export default {
     // })
 
     const search = ref('')
-    const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach'])
+    const names = ref(['Mario', 'Yoshi P', 'Luigi', 'Toad', 'Bowser', 'Koopa', 'Peach', 'Kainé', 'Emil'])
 
     watch(search, () => {
       console.log('watch function ran')
